@@ -1,0 +1,16 @@
+.wrapper {
+    display: flex;
+}
+
+/*css лучше подключать main.scss, чем в main.css.
+*/
+/*see more: https://github.com/vedees/webpack-template/blob/master/README.md#import-only-sass-or-css-libs*/
+
+/*Или css можно подключить минуя scss- в main.js или*/
+/*import './assets/scss/main.scss'*/
+/*import './assets/css/main.css'*/
+
+/*или в App.vue*/
+/*<style lang="scss" scoped>*/
+/*@import '../assets/css/main';*/
+/*</style>*/
