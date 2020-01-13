@@ -1,0 +1,28 @@
+
+    .cc {
+        border: #fc5c65 1px solid;
+    }
+    .vv {
+        border: #fcc022 1px solid;
+    }
+    .bb {
+        border: #fbfc2e 1px solid;
+    }
+    .nn {
+        border: #26fc23 1px solid;
+    }
+    .mm {
+        border: #523afc 1px solid;
+    }
+    .xx {
+        border: #000000 1px solid;
+    }
+    .xxx {
+        border: #000000 1px dotted;
+    }
+    .zz {
+        border: #ffffff 1px solid;
+    }
+    .zzz {
+        border: #ffffff 1px dotted;
+    }
