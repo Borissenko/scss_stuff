@@ -1,0 +1,29 @@
+ПОДКЛЮЧЕНИЕ СТИЛЕЙ
+
+
+a) в main.js
+
+import './assets/scss/main.scss'
+import './assets/css/main.css'
+
+
+
+
+b) в App.vue
+
+<style lang="scss" scoped>
+  @import '../assets/css/main';
+  @import '../assets/scss/main';   //импорт main.scss
+</style>
+
+
+
+
+c) css можно подключить в main.scss
+/*see more: https://github.com/vedees/webpack-template/blob/master/README.md#import-only-sass-or-css-libs*/
+ @import '../assets/css/main.css'; 
+
+
+
+d) через style-resources-loader
+- см install SCSS

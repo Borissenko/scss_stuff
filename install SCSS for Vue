@@ -1,0 +1,206 @@
+ВАРИАНТЫ УСТАНОВКИ SCSS на Vue
+
+при создании болванки через Vue-CLI нам предлагают 2 варианта установки scss
+- Dart
+- Node
+но они все равно устанавливаются без экспорта переменных.
+
+
+.............................................
+Dart-scss вариант подключения scss (он лучше)
+.............................................
+~ https://cli.vuejs.org/ru/guide/css.html#%D1%83%D0%BA%D0%B0%D0%B7%D0%B0%D0%BD%D0%B8%D0%B5-%D1%81%D1%81%D1%8Bn%D0%BE%D0%BA-%D0%BD%D0%B0-%D1%80%D0%B5%D1%81%D1%83%D1%80%D1%81%D1%8B
+
+A.
+    "sass": "^1.26.3",
+    "sass-loader": "^8.0.2",
+
+B_1.
+Если вы хотите автоматически импортировать файлы (для цветов, переменных, примесей...), 
+а не делать в каждом стиле  
+@import '../assets/scss/main';   //импорт main.scss
+
+можно использовать style-resources-loader
+https://github.com/yenshih/style-resources-loader
+
+npm i style-resources-loader -D
+
+//webpack.config.js
+module.exports = {
+    // ...
+    module: {
+        rules: [{
+            test: /\.scss$/,
+            use: ['style-loader', 'css-loader', 'sass-loader', {
+                loader: 'style-resources-loader',
+                options: {
+                    patterns: [
+                        './path/from/context/to/scss/variables/*.scss',
+                        './path/from/context/to/scss/mixins/*.scss',
+                    ]
+                }
+            }]
+        }]
+    },
+    // ...
+}
+
+
+
+Причем переменные и функции scss дб в отдельном файле от стилей,
+и данным пакетом не надо подключать стили(+/-, но тогда не пройдет команда @include .class).
+
+
+
+C. 
+-это альтернатива второй части пункта "B_1".
+Вместо внесения кода в webpack.config.js напрямую делаем это через vue.config.js.
+
+https://cli.vuejs.org/ru/guide/css.html#css-%D0%BC%D0%BE%D0%B4%D1%83n%D0%B8
+Иногда может возникнуть необходимость передать настройки в загрузчик пре-процессора для webpack. 
+Создаем в корне проекта vue.config.js
+//vue.config.js
+
+module.exports = {
+  css: {
+    loaderOptions: {
+      // по умолчанию опция `sass` будет применяться к обоим синтаксисам- и к sass, и к scss, и поэтому опцию scss можно не заявлять.
+      sass: {
+        prependData: `@import "~@/variables.sass"`    //(для остальных версий)
+        prependData: `@import "~@/variables.scss";`   //(для остальных версий)(для scss- дб ";" в конце(!))
+        data: `@import "@/styles/_variables.scss";`   //(для sass-loader до v7 вкл-но)
+      }, 
+      scss: {
+        prependData: `@import "~@/variables.scss";`  // ";" в конце(!).
+      },
+      css: {
+        // options here will be passed to css-loader
+      },
+      postcss: {
+        // options here will be passed to postcss-loader
+      }
+    }
+  }
+};
+
+
+
+
+B_2.
+Вы также можете использовать:
+- ПЛАГИН vue-cli-plugin-style-resources-loader
+vue add style-resources-loader
+- или
+npm i style-resources-loader -D
+
+Создаем в корне проекта vue.config.js
+//vue.config.js
+
+const path = require('path')
+module.exports = {
+  pluginOptions: {
+    'style-resources-loader': {
+      'preProcessor': 'scss',
+      'patterns': [
+        path.resolve(__dirname, './src/styles/abstracts/*.scss'),
+      ]
+    }
+  }
+}
+
+
+
+
+
+
+..................................
+Node-scss вариант подключения scss
+..................................
+
+A.
+    "node-sass": "^4.12.0",
+    "sass-loader": "^8.0.2",
+
+B.
+https://vue-loader.vuejs.org/guide/pre-processors.html#sass
+
+\\webpack.config.js
+
+module.exports = {
+  module: {
+    rules: [
+      // ... other rules omitted
+
+      // this will apply to both plain `.scss` files
+      // AND `<style lang="scss">` blocks in `.vue` files
+      {
+        test: /\.scss$/,
+        use: [
+          'vue-style-loader',
+          'css-loader',
+          'sass-loader'
+        ]
+      }
+    ]
+  },
+  // plugin omitted
+}
+
+C.
+Note that sass-loader processes the non-indent-based scss syntax by default. 
+
+// webpack.config.js -> module.rules
+{
+  test: /\.sass$/,
+  use: [
+    'vue-style-loader',
+    'css-loader',
+    {
+      loader: 'sass-loader',
+      options: {
+        indentedSyntax: true,
+        // sass-loader version >= 8
+        sassOptions: {
+          indentedSyntax: true
+        }
+      }
+    }
+  ]
+}
+
+D. Sharing Global Variables
+
+// webpack.config.js -> module.rules
+{
+  test: /\.scss$/,
+  use: [
+    'vue-style-loader',
+    'css-loader',
+    {
+      loader: 'sass-loader',
+      options: {
+        // you can also read from a file, e.g. `variables.scss`
+        // use `data` here if sass-loader version < 8
+        prependData: `$color: red;`
+      }
+    }
+  ]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

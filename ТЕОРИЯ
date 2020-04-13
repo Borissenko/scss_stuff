@@ -1,0 +1,159 @@
+
+пропись вложенных классов
+.container {
+  &__item {    //это класс .container__item, дочка в .container
+  }
+  &.show {     //это класс  .container .show
+  }
+}
+
+
+....................................................
+наследование класса
+.font48 {
+  font-style: normal;
+  font-weight: bold;
+  font-size: rem(48);
+  line-height: rem(57);
+  color: #000000;
+}
+
+%font-center {                 //ни где не используемый класс-заготовка
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  margin-top: 40px;
+  @extend .font48;
+  @extend %font-center;
+}
+
+...................................................
+декларация @media 
+
+.is-mobile {
+  @media (min-width: 1020px) {
+    display: none;
+  }
+}
+
+....................................................
+ГЕНЕРАЦИЯ КЛАССОВ-ДОЧЕК В CSS с небольшой разницей между ними
+
+<div class="cleaners">
+   <div v-for="(cleaner, index) in 4" :key="index" class="cleaner">
+     goooooo
+   </div>
+</div>
+
+
+  .cleaners {
+    display: grid;
+
+    .cleaner {
+      position: relative;
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+  }
+
+  @mixin tr-reset() {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+
+  .cleaners {
+    @for $i from 1 through 6 {
+      .cleaner:nth-child(#{$i}) {
+        @include tr-reset();           //reset каждый цикл(!)
+        transition: opacity linear .5s, transform  linear .5s*;
+        transition-delay: ($base-delay + $i * $base-delay);
+      }
+    }
+  }
+
+
+....................................................
+ПЕРЕМЕННЫЕ
+$primary: #DD3D3D;
+
+2 значения в переменной одновременно:
+$appear: 0.5s linear;
+
+.title {
+  color: $primary;
+  transition: opacity $appear;
+}
+
+...................................................
+МИКСИНЫ
+-набор свойств, но их значения- как аргументы при использовании миксина
+-выдают СТИЛЬ
+
+@mixin fz($nn) {
+  font-size: #{($nn / 16)}rem;
+}
+
+@mixin transform-reset() {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.title {
+  @include fz(8)
+  @include transform-reset()
+}
+
+
+....................................................
+ФУНКЦИИ
+-выдают ЗНАЧЕНИЕ
+
+1)
+$generalFontSize_number: 16;
+
+@function rem($n) {
+  @return #{($n / $generalFontSize_number)}rem;
+}
+
+
+2)
+@function trns($h, $s...) {
+  $f: '';
+  @each $t in $s {
+    $f: $f + $t + ' ' + $h + ', ';
+  }
+  @return #{$f};
+}
+
+.clean {
+  transition: trns(.5s, opacity, transform);
+}
+
+==>>
+/*эта функция выдаст:*/
+/*opacity linear .5s*/
+/*transform  linear .5s*/
+
+
+3)ПРОЦЕНТЫ в scss
+$my_width: percentage(4/12);
+или
+$my_width: 4/12*100%;
+
+div{
+width: $my_width;
+}
+
+...................................
+
+
+
+
+
+
+
+
+

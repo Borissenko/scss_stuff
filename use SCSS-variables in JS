@@ -1,0 +1,25 @@
+Получение SCSS-variables to component's JS.
+
+
+https://www.bluematador.com/blog/how-to-share-variables-between-js-and-sass
+
+a) В SCSS-стилях обозначаем :export 
+$animation-ms : 20ms;
+:export {
+  animationHowLong: $animation-ms;
+}
+
+
+
+b) В компоненте используем
+import styles from '../styles/animation.scss'
+
+const mls = parseInt(styles.animationHowLong)
+
+или
+computed: {
+  ff() {
+    return parseInt(styles.animationHowLong)
+  }
+}
+

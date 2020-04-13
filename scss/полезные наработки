@@ -1,0 +1,40 @@
+..................................................
+полезные наработки
+..................................................
+
+ПЕРЕВОД px to rem
+
+a)
+$generalFontSize_px: 16px;
+$generalFontSize_number: 16;
+
+@function rem($n) {
+  @return #{($n / $generalFontSize_number)}rem;
+}
+
+b)
+$baseFontSize : 14;
+@function rem($pixels, $context: $baseFontSize) {
+  @if (unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+
+  @if (unitless($context)) {
+    $context: $context * 1px;
+  }
+
+  @return $pixels / $context * 1rem;
+}
+
+.class{
+ font-size:rem(38);
+}
+
+.................................................
+нужные константы
+
+$InCubic: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+$OutCubic: cubic-bezier(0.215, 0.61, 0.355, 1);
+
+
+
