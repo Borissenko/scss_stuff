@@ -1,0 +1,177 @@
+Ретина только на картинки влияет, делая их размыленными. Самый простой способ - бери все изображения с увеличенным в 2 раза размером.
+Например нужна картинка 100 на 100 пикселей на сайте - бери картинку 200 на 200 и указывай ей размер в css 100x100.
+Таким образом ты заставишь ретина-дисплей отображать картинку с двойной плотностью пикселей.
+
+.image {
+  background-image: url(example2x.png);
+  background-size: 100px 200px;
+  /* Alternatively background-size: contain; */
+  width: 100px;
+  height: 200px;
+}
+
+
+или
+.icon {
+  background-image: url(example.png);
+  width: 100px;
+  height: 200px;
+  
+}
+@media (min-resolution: 1.5dppx){
+  .icon {
+    background-image: url(example2x.png);
+  }
+}
+
+
+
+
+Разрешение для мониторов
+1024×768px  96dpi (72dpi)
+
+
+Разрешения экранов айфонов
+
+         Год релиза  Логическое разрешение, пикс   Физическое разрешение, пикс	 Соотношение сторон	Размер экрана, пикс	Плотность пикселей, пикс/дюйм
+iPhone 2G	2007	320 × 480	320 × 480	3:4	3.5″	163
+iPhone 3G	2008	320 × 480	320 × 480	3:4	3.5″	163
+iPhone 3GS	2009	320 × 480	320 × 480	3:4	3.5″	163
+iPhone 4	2010	320 × 480	640 × 960	3:4	3.5″	326
+iPhone 4S	2011	320 × 480	640 × 960	3:4	3.5″	326
+iPhone 5	2012	320 × 568	640 × 1136	9:16	4″	326
+iPhone 5C	2013	320 × 568	640 × 1136	9:16	4″	326
+iPhone 5S	2013	320 × 568	640 × 1136	9:16	4″	326
+iPhone 6	2014	375 × 667	750 × 1334	9:16	4.7″	326
+iPhone 6+	2014	375 × 667	750 × 1334	9:16	4.7″	326
+iPhone 6S	2015	375 × 667	750 × 1334	9:16	4.7″	326
+iPhone 6S+	2015	414 × 736	1080 × 1920	9:16	5.5″	401
+iPhone SE	2016	320 × 568	640 × 1136	9:16	4″	326
+iPhone 7	2016	375 × 667	750 × 1334	9:16	4.7″	326
+iPhone 7+	2016	414 × 736	1080 × 1920	9:16	5.5″	401
+iPhone 8	2017	375 × 667	750 × 1334	9:16	4.7″	326
+iPhone 8+	2017	414 × 736	1080 × 1920	9:16	5.5″	401
+iPhone X	2017	375 × 812	1125 × 2436	9:19.5	5.8″	458
+iPhone XS	2018	375 × 812	1125 × 2436	9:19.5	5.8″	458
+iPhone XS Max	2018	414 × 896	1242 × 2688	9:19.5	6.5″	458
+iPhone XR	2018	414 × 896	828 × 1792	9:19.5	6.1″	326
+iPhone 11	2019	375 × 812	828 × 1792	9:19.5	6.1″	458
+iPhone 11 Pro	2019	375 × 812	1125 × 2436	9:19.5	5.8″	458
+iPhone 11 Pro Max	2019	414 × 896	1242 × 2688	9:19.5	6.5″	458
+
+
+Разрешения экранов айпадов
+
+         Год релиза  Логическое разрешение, пикс   Физическое разрешение, пикс	 Соотношение сторон	Размер экрана, пикс	Плотность пикселей, пикс/дюйм
+iPad	        2010	768 × 1024	768 × 1024	3:4	9.7″	132
+iPad 2	        2011	768 × 1024	768 × 1024	3:4	9.7″	132
+iPad Mini	2012	768 × 1024	1536 × 2048	3:4	7.9″	326
+iPad 3	        2012	768 × 1024	1536 × 2048	3:4	9.7″	264
+iPad 4	        2012	768 × 1024	1536 × 2048	3:4	9.7″	264
+iPad Mini 2	2013	768 × 1024	1536 × 2048	3:4	7.9″	326
+iPad Air	2013	768 × 1024	1536 × 2048	3:4	9.7″	264
+iPad Mini 3	2014	768 × 1024	1536 × 2048	3:4	7.9″	326
+iPad Air 2	2014	768 × 1024	1536 × 2048	3:4	9.7″	264
+iPad Pro 12.9″	2015	1024 × 1366	2048 × 2732	3:4	12.9″	264
+iPad Mini 4	2015	768 × 1024	1536 × 2048	3:4	7.9″	326
+iPad Pro 9.7″	2016	768 × 1024	1536 × 2048	3:4	9.7″	264
+iPad Pro 12.9″	2017	1024 × 1366	2048 × 2732	3:4	12.9″	264
+iPad Pro 10.5″	2017	834 × 1112	1668 × 2224	3:4	10.5″	264
+iPad 5	        2017	768 × 1024	1536 × 2048	3:4	9.7″	264
+iPad 6	        2018	768 × 1024	1536 × 2048	3:4	9.7″	264
+iPad Mini 5	2019	768 × 1024	1536 × 2048	3:4	7.9″	326
+iPad 7	        2019	768 × 1024	1620 × 2160	3:4	10.2″	264
+iPad Air 3	2019	834 × 1112	1668 × 2224	3:4	10.5″	264
+iPad Pro 12.9″	2018‑2020	768 × 1024	2048 × 2732	3:4	12.9″	264
+iPad Pro 11″	2018‑2020	768 × 1024	1668 × 2388	3:4	11″	264
+
+
+
+Samsung
+
+Model	       Viewport	Resolution  Diagonal_Screensize	DPI
+Galaxy S9 Plus	412x846	1440x2960	6.2 inch	531
+Galaxy S9	360x740	1440x2960	5.8 inch	568
+Galaxy Note 8	360x740	1440x2960	6.3 inch	522
+Galaxy S8 Plus	412x846	1440x2960	6.2 inch	531
+Galaxy S8	360x740	1440x2960	5.8 inch	568
+Galaxy S7	360x640	1440x2560	5.1 inch	576
+Galaxy S7 Edge	360x640	1440x2560	5.5 inch	534
+Galaxy J3	360x640	720x1280	5   inch	294
+Galaxy J7	360x640	720x1280	5.5 inch	267
+Galaxy S6	360x640	1440x2560	5.1 inch	576
+
+
+Huawei
+
+Model	       Viewport	Resolution  Diagonal_Screensize	DPI
+Huawei P20 Lite	360x760	1080x2280	5.84 inch	432
+Huawei P20 Pro	360x747	1080x2240	6.1 inch	408
+Huawei P20	360x748	1080x2244	5.8 inch	429
+Huawei P10	360x640	1080x1920	5.1 inch	432
+Huawei P10 Lite	360x640	1080x1920	5.2 inch	424
+Huawei P9	360x640	1080x1920	5.2 inch	424
+Huawei P9 Lite	360x640	1080x1920	5.2 inch	424
+Huawei P8 Lite	360x640	1080x1920	5.2 inch	424
+
+
+Motorola
+
+Model	       Viewport	Resolution  Diagonal_Screensize	DPI
+Moto Z	360x640	1440x2560	5.5 inch	534
+Moto E4	360x640	720x1280	5 inch	294
+Moto Z2	360x640	1440x2560	5.5 inch	534
+DROID Turbo	360x640	1440x2560	5.2 inch	565
+Moto Z Play	360x640	1080x1920	5.5 inch	401
+Moto Z2 Play	360x640	1080x1920	5.5 inch	401
+Moto G5 Plus	360x640	1080x1920	5.2 inch	424
+
+
+Xiaomi
+
+Model	       Viewport	Resolution  Diagonal_Screensize	DPI
+Redmi Note 5	393x786	1080x2160	6 inch	402
+Redmi Note 4	360x640	1080x1920	5.5 inch	401
+Redmi Note 3	360x640	1080x1920	5.5 inch	401
+Redmi 4	        360x640	720x1280	5   inch	294
+Redmi 4X	360x640	720x1280	5   inch	294
+
+
+Google
+Model	Viewport	Resolution	Diagonal Screensize	DPI
+Pixel 3 XL	393x786	1440x2880	6   inch	537
+Pixel 3   	393x786	1080x2160	5.5 inch	439
+Pixel 2	        412x640	1080x1920	5 inch	        441
+Pixel 2 XL	412x823	1440x2880	6 inch	        537
+Pixel	        360x640	1080x1920	5 inch	        441
+Pixel XL	411x731	1440x2560	5.5 inch	534
+Nexus 6	        360x640	1440x2560	5.96 inch	493
+Nexus 6P	412x738	1440x2560	5.7 inch	515
+
+LG
+
+Model	Viewport	Resolution	Diagonal Screensize	DPI
+LG K20	        360x640	720x1280	5.3 inch	277
+LG Tribute HD	360x640	720x1280	5 inch  	294
+LG Aristo 2	360x640	720x1280	5 inch  	294
+LG Stylo 2	360x640	720x1280	5.7 inch	258
+LG V20	        360x640	1440x2560	5.7 inch	515
+LG K10   	360x640	720x1280	5.3 inch	277
+LG K7   	320x570	480x854	        5 inch	        196
+
+
+ZTE
+
+Model	Viewport	Resolution	Diagonal Screensize	DPI
+ZTE ZMAX Pro	360x640	1080x1920	6 inch   	160
+ZTE Max XL	360x640	1080x1920	6 inch          367
+ZTE Blade X	360x640	720x1280	5.5 inch	233
+ZTE Majesty Pro	320x570	480x854	        4.5 inch	218
+ZTE Maven 3	320x570	480x854   	5 inch	        196
+
+
+
+
+
+
+
