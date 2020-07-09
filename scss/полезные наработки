@@ -12,6 +12,8 @@ $generalFontSize_number: 16;
   @return #{($n / $generalFontSize_number)}rem;
 }
 
+
+
 b)
 $baseFontSize : 14;
 @function rem($pixels, $context: $baseFontSize) {
@@ -26,8 +28,10 @@ $baseFontSize : 14;
   @return $pixels / $context * 1rem;
 }
 
+
+ИСПОЛЬЗОВАНИЕ
 .class{
- font-size:rem(38);
+ font-size: rem(38);
 }
 
 .................................................

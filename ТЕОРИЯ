@@ -148,6 +148,22 @@ width: $my_width;
 }
 
 ...................................
+Генерация CSS-классов с помлщью цикла
+
+.show {
+  @for $i from 0 through 10 {
+    #checkbox_#{$i} {
+      width: 10px;
+      height: 10px;
+      @include transition-reset();
+      transition: trns($appear, opacity, transform);
+      transition-delay: ($base-delay + $i * $base-delay);
+    }
+    .review:nth-child(#{$i}) {
+      border: red 1px solid;
+    }
+  }
+}
 
 
 
