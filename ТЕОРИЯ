@@ -3,7 +3,7 @@
 .container {
   &__item {    //это класс .container__item, дочка в .container
   }
-  &.show {     //это класс  .container .show
+  &.show {     //это класс .container .show
   }
 }
 
@@ -75,17 +75,46 @@
   }
 
 
+Генерация CSS-классов с помлщью цикла
+
+.show {
+  @for $i from 0 through 10 {
+    #checkbox_#{$i} {
+      width: 10px;
+      height: 10px;
+      @include transition-reset();
+      transition: trns($appear, opacity, transform);
+      transition-delay: ($base-delay + $i * $base-delay);
+    }
+    .review:nth-child(#{$i}) {
+      border: red 1px solid;
+    }
+  }
+}
+
+
 ....................................................
 ПЕРЕМЕННЫЕ
 $primary: #DD3D3D;
+$myPadding: 20px;
 
-2 значения в переменной одновременно:
+2 значения в переменной одновременно, списковая переменная
 $appear: 0.5s linear;
 
 .title {
   color: $primary;
   transition: opacity $appear;
+  padding: $myPadding+30;            //математические вычисления В ОТКРЫТУЮ
 }
+
+В SASS существует шесть разных типов переменных:
+Строковые  $myString: “здесь ваш текст”;
+Числовые   $myNum: 10px;
+Цветовые   $myColor: white;
+Логические $myBool: true;
+Списковые  $myItemList: 1px solid red;
+Тип null   $myVar: null;
+
 
 ...................................................
 МИКСИНЫ
@@ -100,10 +129,16 @@ $appear: 0.5s linear;
   opacity: 1;
   transform: translate(0, 0);
 }
+@mixin transform-reset {
+  opacity: 1;
+  transform: translate(0, 0);
+}
 
+использование
 .title {
   @include fz(8)
   @include transform-reset()
+  @include transform-reset
 }
 
 
@@ -147,25 +182,17 @@ div{
 width: $my_width;
 }
 
-...................................
-Генерация CSS-классов с помлщью цикла
+..............................
 
-.show {
-  @for $i from 0 through 10 {
-    #checkbox_#{$i} {
-      width: 10px;
-      height: 10px;
-      @include transition-reset();
-      transition: trns($appear, opacity, transform);
-      transition-delay: ($base-delay + $i * $base-delay);
-    }
-    .review:nth-child(#{$i}) {
-      border: red 1px solid;
-    }
-  }
-}
+СТАНДАРТНЫЕ ЦВЕТОВЫЕ ФУНКЦИИ
+darken(color, amount);
+lighten(color, amount);
+saturate(color, amount);     //Насыщение
+desaturate(color, amount);
+alpha(color)
 
-
+$myColor: #202020;
+color: lighten($myColor, 40%); //затемнение цвета на 40%
 
 
 
