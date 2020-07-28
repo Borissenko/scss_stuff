@@ -5,11 +5,9 @@
 @import "utils/fonts";  //or
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap&subset=cyrillic-ext');
 
-@import "utils/reset";
+@import "dounCSS";      // без ./ и без .css.  Импортировать в НАЧАЛЕ main.scss
 
-//подключение scss-модулей:
-//@import "modules/footer.scss";- в конце файла
-//@import "modules/header.scss";- в конце файла
+
 
 
 html {
@@ -17,25 +15,31 @@ html {
   font-size: $mainFontSize;
   line-height: $mainLineHeight;
   color: $mainFontColor;
-  height: 100%;
-  @media screen and (max-width: $desktopWidth) {
+
+  @media (max-width: $desktopWidth) {
 		font-size: 16px;
   }
-  @media screen and (max-width: $tableWidth) {
+  @media (max-width: $tableWidth) {
 		font-size: 15px;
   }
-  @media screen and (max-width: $phoneWidth) {
+  @media (max-width: $phoneWidth) {
 		font-size: 14px;
   }
 }
 
 
 
-// подключение Modules
- @import "modules/footer.scss";
+//подключение scss-модулей:
 
-//для последующего использования переменной fffsss в JS
+@import "modules/footer.scss";         // совершаем в конце файла
+@import "modules/header.scss";         // совершаем в конце файла
+
+
+
+
+//Заявляем переменную varFromCSS для последующего ее использования в JS
+
 :export {
-  fffsss:  $mainFontSize;
+  varFromCSS:  $mainFontSize;
 }
 

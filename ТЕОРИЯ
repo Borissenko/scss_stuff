@@ -102,9 +102,10 @@ $myPadding: 20px;
 $appear: 0.5s linear;
 
 .title {
-  color: $primary;
+  color: $primary;                   //использование переменной
   transition: opacity $appear;
-  padding: $myPadding+30;            //математические вычисления В ОТКРЫТУЮ
+  padding: $myPadding + 30;          //математические вычисления В ОТКРЫТУЮ, добавлять "px" не нужно, т.к. оно прописано в значении переменной $myPadding.
+  $myColor: red !global;             //переменная, заявленная локально, будет видна везде, а не только внутри скобок.
 }
 
 В SASS существует шесть разных типов переменных:
@@ -116,9 +117,32 @@ $appear: 0.5s linear;
 Тип null   $myVar: null;
 
 
+
+//Переменная varFromCSS для последующего ее ИСПОЛЬЗОВАНИЯ в JS.
+
+// variables.scss
+$mainColor: red;
+:export {      // :export подчеркивается в webStorm'e красным, но это надо игнорировать.
+  colorFromCSS:  $mainColor;
+}
+
+
+//
+import variables from 'variables.scss'
+
+<div style={backgroundColor: myColor}>
+
+computed: {
+  myColor() {
+    return variables.colorFromCSS
+  }
+}
+
+
+
 ...................................................
 МИКСИНЫ
--набор свойств, но их значения- как аргументы при использовании миксина
+-набор свойств, но значения у этих свойств - поступают как аргументы миксина
 -выдают СТИЛЬ
 
 @mixin fz($nn) {
