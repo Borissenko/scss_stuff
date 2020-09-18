@@ -35,3 +35,16 @@ $border-base             : #DCDFE6;
 $border-light            : #E4E7ED;
 $border-lighter          : #EBEEF5;
 $border-lightex          : #F2F6FC;
+
+// Отступы
+$spacing-small: .75rem;
+$spacing-single: 1rem;
+$spacing-double: 2rem;
+$spacing-triple: 3rem;
+$spacing-big: 6rem;
+ 
+// Media queries
+$desktop: 800px;
+$tablet: 600px;
+$mobile: 480px;
+ 

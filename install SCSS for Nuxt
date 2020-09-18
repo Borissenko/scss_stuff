@@ -41,7 +41,13 @@ npm i nuxt-sass-resources-loader  //без  --save-dev(!)
 (https://www.npmjs.com/package/nuxt-sass-resources-loader)
 
 
+................
+БУДЕТ ВЕРНЕЕ
 
+В пунктах А) и B_1) подключать только main.scss,
+а в нем прописывать импорт остальных SCSS-файлов:
 
+@import 'constants';
+@import 'utils';
 
 
