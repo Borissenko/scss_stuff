@@ -18,13 +18,13 @@
   color: #000000;
 }
 
-%font-center {                 //ни где не используемый класс-заготовка
+%font-center {      //ни где не используемый класс-заготовка
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.title {
+.title {           //применение
   margin-top: 40px;
   @extend .font48;
   @extend %font-center;
@@ -33,9 +33,15 @@
 ...................................................
 декларация @media 
 
+а)
 .is-mobile {
   @media (min-width: 1020px) {
-    display: none;
+    display: none;     //CSS-свойство.
+
+    .narrator__name {  //CSS-класс, прописываем не только отдельные свойства, но и ВКЛЮЧАЕМ(!) в @media целые классы.
+      padding: 0 1rem;
+      font-size: 1.975rem;
+    }
   }
 }
 
