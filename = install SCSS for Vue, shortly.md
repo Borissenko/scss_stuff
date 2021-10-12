@@ -1,22 +1,22 @@
-УСТАНОВКА SCSS на Vue, КРАТКО
+# УСТАНОВКА SCSS на Vue, КРАТКО
 (по Dart-scss варианту подключения scss)
 
-В последний раз установил Vue-болванку по Dart-scss варианту
-добавил vue.config.js,
-а
+В последний раз установил Vue-болванку по Dart-scss варианту,
+добавил vue.config.js, а
+
 npm i sass sass-loader -D
 npm i style-resources-loader -D
-НЕ устанавливал -
-И ВСЕ РАБОТАЛО(!).
+
+НЕ устанавливал - И ВСЕ РАБОТАЕТ(!).
 
 
 ...........................
-1.
+# 1. Можно НЕ устанавливать уже!
 npm i sass sass-loader -D            //не нужно, если установили Dart-scss в ходе Vue_create_project
 npm i style-resources-loader -D      //для подключения констант
 
-2.
-Создаем в корне проекта vue.config.js
+# 2. Подключаем импорт переменных
+> Создаем в корне проекта vue.config.js
 //vue.config.js
 
 module.exports = {
