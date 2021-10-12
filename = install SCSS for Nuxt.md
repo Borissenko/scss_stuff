@@ -1,10 +1,10 @@
 install SCSS for Nuxt
 
-# A.
+# npm install
 npm install sass sass-loader@10 fibers --save-dev
 npm install @nuxtjs/style-resources --save-dev
 
-//nuxt.config.js
+# nuxt.config.js
 css: [
 '~/assets/SCSS/main.scss'
 ],
@@ -15,12 +15,12 @@ buildModules: [
 '@nuxtjs/style-resources',
 ],
 
-// assets/SCSS/main.scss
+# assets/SCSS/main.scss
 @import 'constants';
 @import 'utils';
 
 
-// assets/SCSS/constants.scss
+# assets/SCSS/constants.scss
 $red: #ec0505;
 
 
