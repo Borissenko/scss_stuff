@@ -23,7 +23,7 @@ module.exports = {
   css: {
     loaderOptions: {
       scss: {
-        prependData: `@import "~@/assets/main.scss";`  // ";" дб в конце(!).
+        prependData: `@import "~@/assets/main.scss";`  // ";" дб в конце(!). Use "~@/" одновременно(!).
       },
       // css: {
         // options here will be passed to css-loader
@@ -33,7 +33,7 @@ module.exports = {
       // }
     }
   }
-};
+}
 
 
 ИЛИ

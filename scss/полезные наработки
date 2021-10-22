@@ -5,11 +5,14 @@
 ПЕРЕВОД px to rem
 
 a)
+@use "sass:math";    //декларировать В НАЧАЛЕ страницы
+
 $generalFontSize_px: 16px;
 $generalFontSize_number: 16;
 
 @function rem($n) {
-  @return #{($n / $generalFontSize_number)}rem;
+  @return #{ math.div($n, $generalFontSize-number)}rem;
+  // @return #{($n / $generalFontSize_number)}rem;         //old version
 }
 
 
