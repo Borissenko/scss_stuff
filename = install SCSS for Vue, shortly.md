@@ -5,7 +5,7 @@
 добавил vue.config.js, а
 
 npm i sass sass-loader -D
-npm i style-resources-loader -D
+npm i style-resources-loader -D    //<< нужен опять(!)
 
 НЕ устанавливал - И ВСЕ РАБОТАЕТ(!).
 
